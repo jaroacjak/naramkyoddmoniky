@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náramok s menom – Dominikine náramky</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe4f1, #fff);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        body.friday-sale {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: white;
+        }
+
+        .sale-bar {
+            background: linear-gradient(90deg, #ff4f9a, #ff82b8);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        body.friday-sale .sale-bar {
+            background: linear-gradient(90deg, #000, #222);
+        }
+
+        .black-friday {
+            display: none;
+            animation: blink 1s infinite;
+        }
+
+        body.friday-sale .normal-sale {
+            display: none;
+        }
+
+        body.friday-sale .black-friday {
+            display: block;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        body.friday-sale header {
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4f9a;
+        }
+
+        body.friday-sale .logo {
+            color: #ff82b8;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        body.friday-sale nav a {
+            color: white;
+        }
+
+        nav a:hover {
+            color: #ff4f9a;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .product-box {
+            background: rgba(255,255,255,0.85);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        body.friday-sale .product-box {
+            background: rgba(40,40,40,0.9);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #ffd0e5, #fff);
+        }
+
+        body.friday-sale .product-image {
+            background: linear-gradient(135deg, #333, #111);
+        }
+
+        .product-info h1 {
+            color: #ff4f9a;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        body.friday-sale .product-info h1 {
+            color: #ff82b8;
+        }
+
+        .description {
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .sale-price {
+            color: #ff4f9a;
+        }
+
+        body.friday-sale .sale-price {
+            color: #ff82b8;
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff4f9a, #ff82b8);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.04);
+        }
+
+        .back {
+            margin-top: 20px;
+            display: inline-block;
+            color: #ff4f9a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+            color: #777;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .product-box {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+
+            .product-info h1 {
+                font-size: 30px;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sale-bar">
+
+        <div class="normal-sale">
+            ⏰ Akcia začína o:
+            <span id="normalCountdown"></span>
+        </div>
+
+        <div class="black-friday">
+            🖤 BLACK FRIDAY – 70% ZĽAVA NA VŠETKO!
+            ⏰ <span id="blackFridayCountdown"></span>
+        </div>
+
+    </div>
+
+    <header>
+
+        <div class="logo">
+            💗 Dominikine náramky
+        </div>
+
+        <nav>
+            <a href="index.html">Domov</a>
+            <a href="kosik.html">🛒 Košík</a>
+            <a href="kontakt.html">Kontakt</a>
+        </nav>
+
+    </header>
+
+    <main class="container">
+
+        <div class="product-box">
+
+            <img
+                class="product-image"
+                src="https://i.postimg.cc/D0jds24w/naramok-s-menom.jpg"
+                alt="Náramok s menom"
+            >
+
+            <div class="product-info">
+
+                <h1>
+                    Náramok s menom
+                </h1>
+
+                <p class="description">
+                    Krásny náramok s menom, ktorý môžeš nosiť každý deň.
+                    Vyber si svoj obľúbený náramok a pridaj ho do košíka.
+                </p>
+
+                <div class="price" id="price">
+                    1,50 €
+                </div>
+
+                <button class="btn" onclick="addToCart()">
+                    🛒 Pridať do košíka
+                </button>
+
+                <br>
+
+                <a class="back" href="index.html">
+                    ← Späť na produkty
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 Dominikine náramky 💗
+    </footer>
+
+    <script>
+
+        function isFriday() {
+            return new Date().getDay() === 5;
+        }
+
+
+        function updateSale() {
+
+            if (isFriday()) {
+
+                document.body.classList.add("friday-sale");
+
+                document.getElementById("price").innerHTML =
+                    '<span class="old-price">1,50 €</span>' +
+                    '<span class="sale-price">0,45 €</span>';
+
+            } else {
+
+                document.body.classList.remove("friday-sale");
+
+                document.getElementById("price").innerHTML =
+                    "1,50 €";
+            }
+        }
+
+
+        function updateCountdown() {
+
+            const now = new Date();
+            let target = new Date();
+
+            if (isFriday()) {
+
+                target.setHours(23, 59, 59, 999);
+
+            } else {
+
+                const daysUntilFriday =
+                    (5 - now.getDay() + 7) % 7;
+
+                target.setDate(
+                    now.getDate() +
+                    (daysUntilFriday === 0 ? 7 : daysUntilFriday)
+                );
+
+                target.setHours(0, 0, 0, 0);
+            }
+
+            const difference = target - now;
+
+            const days =
+                Math.floor(
+                    difference / (1000 * 60 * 60 * 24)
+                );
+
+            const hours =
+                Math.floor(
+                    (difference / (1000 * 60 * 60)) % 24
+                );
+
+            const minutes =
+                Math.floor(
+                    (difference / (1000 * 60)) % 60
+                );
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+            const text =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            document.getElementById("normalCountdown").textContent = text;
+            document.getElementById("blackFridayCountdown").textContent = text;
+        }
+
+
+        function addToCart() {
+
+            const normalPrice = 1.50;
+
+            const price =
+                isFriday()
+                    ? normalPrice * 0.30
+                    : normalPrice;
+
+            let cart =
+                JSON.parse(
+                    localStorage.getItem("dominikinEshopCart")
+                ) || [];
+
+            cart.push({
+                name: "Náramok s menom",
+                price: price
+            });
+
+            localStorage.setItem(
+                "dominikinEshopCart",
+                JSON.stringify(cart)
+            );
+
+            window.location.href = "kosik.html";
+        }
+
+
+        updateSale();
+        updateCountdown();
+
+        setInterval(() => {
+
+            updateSale();
+            updateCountdown();
+
+        }, 1000);
+
+    </script>
+
+</body>
+</html>
