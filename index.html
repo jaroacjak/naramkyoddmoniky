@@ -283,12 +283,8 @@
 
         <div class="product-grid">
 
-            <!-- KRÁSNE NÁRAMKY -->
             <div class="product-card">
-
-                <div class="product-icon">
-                    💗
-                </div>
+                <div class="product-icon">💗</div>
 
                 <h3>Krásne Náramky</h3>
 
@@ -299,15 +295,10 @@
                 <a href="krasnenaramky.html" class="btn">
                     Pozrieť produkt
                 </a>
-
             </div>
 
-            <!-- KRÁSNE NÁRAMKY S MENO -->
             <div class="product-card">
-
-                <div class="product-icon">
-                    💕
-                </div>
+                <div class="product-icon">💕</div>
 
                 <h3>Krásne Náramky s meno</h3>
 
@@ -315,18 +306,13 @@
                     1,50 €
                 </div>
 
-                <button class="btn" onclick="addToCart('Krásne Náramky s meno', 1.50)">
-                    🛒 Pridať do košíka
-                </button>
-
+                <a href="krasnenaramkysmeno.html" class="btn">
+                    Pozrieť produkt
+                </a>
             </div>
 
-            <!-- RÔZNE PRÍVESKY -->
             <div class="product-card">
-
-                <div class="product-icon">
-                    ✨
-                </div>
+                <div class="product-icon">✨</div>
 
                 <h3>Rôzne prívesky</h3>
 
@@ -334,10 +320,9 @@
                     2,00 €
                 </div>
 
-                <button class="btn" onclick="addToCart('Rôzne prívesky', 2.00)">
-                    🛒 Pridať do košíka
-                </button>
-
+                <a href="rozneprivesky.html" class="btn">
+                    Pozrieť produkt
+                </a>
             </div>
 
         </div>
@@ -349,16 +334,13 @@
     </footer>
 
     <script>
-
         function isFriday() {
             return new Date().getDay() === 5;
         }
 
         function updateSale() {
 
-            const friday = isFriday();
-
-            if (friday) {
+            if (isFriday()) {
                 document.body.classList.add("friday-sale");
 
                 document.getElementById("price1").innerHTML =
@@ -431,34 +413,6 @@
                 `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
-        function addToCart(name, normalPrice) {
-
-            let price;
-
-            if (isFriday()) {
-                price = normalPrice * 0.30;
-            } else {
-                price = normalPrice;
-            }
-
-            let cart =
-                JSON.parse(
-                    localStorage.getItem("dominikinEshopCart")
-                ) || [];
-
-            cart.push({
-                name: name,
-                price: price
-            });
-
-            localStorage.setItem(
-                "dominikinEshopCart",
-                JSON.stringify(cart)
-            );
-
-            window.location.href = "kosik.html";
-        }
-
         updateSale();
         updateCountdown();
 
@@ -466,7 +420,6 @@
             updateSale();
             updateCountdown();
         }, 1000);
-
     </script>
 
 </body>
