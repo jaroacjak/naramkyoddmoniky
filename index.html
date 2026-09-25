@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dominikine náramky</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #f8f5f2;
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      padding: 40px 25px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .refresh {
+      display: inline-block;
+      padding: 13px 28px;
+      border: none;
+      border-radius: 30px;
+      background: #333;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .refresh:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Dominikine náramky</h1>
+
+    <p>
+      Stránka je momentálne nedostupná.<br>
+      Pripravujeme pre vás niečo nové.
+    </p>
+
+    <button class="refresh" onclick="location.reload()">
+      ↻ Refresh
+    </button>
+  </div>
+
+</body>
+</html>
