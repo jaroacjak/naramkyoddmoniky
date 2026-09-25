@@ -146,6 +146,34 @@
             margin-bottom: 25px;
         }
 
+        .name-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #ffb6d5;
+            border-radius: 15px;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 20px;
+            background: white;
+            color: #333;
+        }
+
+        .name-input:focus {
+            border-color: #ff4f9a;
+        }
+
+        body.friday-sale .name-input {
+            background: #222;
+            color: white;
+            border-color: #555;
+        }
+
         .price {
             font-size: 30px;
             font-weight: bold;
@@ -274,8 +302,21 @@
 
                 <p class="description">
                     Krásny náramok s menom, ktorý môžeš nosiť každý deň.
-                    Vyber si svoj obľúbený náramok a pridaj ho do košíka.
+                    Zadaj meno, ktoré chceš mať na náramku, a pridaj produkt do košíka.
                 </p>
+
+                <label class="name-label" for="name">
+                    ✍️ Meno na náramok:
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    class="name-input"
+                    placeholder="Zadaj meno"
+                    maxlength="30"
+                    autocomplete="off"
+                >
 
                 <div class="price" id="price">
                     1,50 €
@@ -382,6 +423,23 @@
 
         function addToCart() {
 
+            const nameInput =
+                document.getElementById("name");
+
+            const name =
+                nameInput.value.trim();
+
+            if (!name) {
+
+                alert(
+                    "Prosím, zadaj meno na náramok. 💗"
+                );
+
+                nameInput.focus();
+
+                return;
+            }
+
             const normalPrice = 1.50;
 
             const price =
@@ -396,6 +454,7 @@
 
             cart.push({
                 name: "Náramok s menom",
+                braceletName: name,
                 price: price
             });
 
