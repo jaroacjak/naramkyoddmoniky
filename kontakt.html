@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kontakt – Dominikine náramky 💕</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff8fc;
+    color: #25212a;
+    line-height: 1.6;
+}
+
+/* =========================
+   HORNÁ AKCIA
+========================= */
+
+.sale-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(90deg,#e83f91,#ff6eae,#e83f91);
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#countdown {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 10px;
+    background: rgba(255,255,255,.95);
+    color: #d93682;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.black-friday {
+    display: none;
+    margin-left: 10px;
+    padding: 4px 12px;
+    background: #111;
+    color: white;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+body.friday-sale .black-friday {
+    display: inline-block;
+    animation:
+        blackFridayBlink
+        .8s
+        infinite
+        alternate;
+}
+
+@keyframes blackFridayBlink {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: .35;
+        transform: scale(1.06);
+    }
+
+}
+
+body.friday-sale .sale-bar {
+    background:
+        linear-gradient(
+            90deg,
+            #050505,
+            #222,
+            #050505
+        );
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 41px;
+    z-index: 999;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #f1dce8;
+    padding: 16px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    color: #df438b;
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+nav a {
+    color: #4a4149;
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+nav a:hover {
+    background: #fff0f7;
+    color: #df438b;
+}
+
+nav a.active {
+    background: #df438b;
+    color: white;
+    box-shadow:
+        0 5px 15px
+        rgba(223,67,139,.25);
+}
+
+/* =========================
+   HLAVNÁ ČASŤ
+========================= */
+
+main {
+    min-height: 70vh;
+    padding: 80px 20px;
+}
+
+.contact-container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading span {
+    color: #df438b;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.heading h1 {
+    margin-top: 5px;
+    font-size:
+        clamp(34px, 6vw, 50px);
+    color: #29232b;
+}
+
+.heading p {
+    margin-top: 8px;
+    color: #81757e;
+}
+
+/* =========================
+   KONTAKTY
+========================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.contact-card {
+    background: white;
+    border: 1px solid #f0dce6;
+    border-radius: 22px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow:
+        0 12px 35px
+        rgba(40,20,30,.06);
+    transition: .25s;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 18px 40px
+        rgba(40,20,30,.10);
+}
+
+.contact-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.contact-card h2 {
+    color: #29232b;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: #756a72;
+    font-size: 14px;
+}
+
+.contact-card a {
+    color: #df438b;
+    text-decoration: none;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   SPÄŤ
+========================= */
+
+.back-button {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+    padding: 12px 20px;
+    background: white;
+    color: #df438b;
+    border: 1px solid #f0c9dc;
+    border-radius: 13px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .25s;
+}
+
+.back-button:hover {
+    background: #fff0f7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #211c22;
+    color: #cfc5cc;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+}
+
+footer strong {
+    color: white;
+}
+
+/* =========================
+   MOBIL
+========================= */
+
+@media (max-width: 800px) {
+
+    header {
+        flex-direction: column;
+        padding: 14px 15px;
+        top: 39px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: auto;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .sale-bar {
+        font-size: 12px;
+    }
+
+    #countdown {
+        display: inline-block;
+        margin: 5px 2px 0;
+    }
+
+    .black-friday {
+        margin-left: 2px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    main {
+        padding: 55px 15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HORNÁ AKCIA -->
+
+<div class="sale-bar">
+
+    <span id="saleText">
+        🔥 V PIATOK -70 % NA VŠETKY NÁRAMKY
+    </span>
+
+    <span id="countdown">
+        Načítavam...
+    </span>
+
+    <span class="black-friday">
+        🖤 BLACK FRIDAY
+    </span>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <a
+        href="index.html"
+        class="logo">
+
+        Dominikine náramky 💕
+
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Domov
+        </a>
+
+        <a href="kosik.html">
+            🛒 Košík
+        </a>
+
+        <a
+            href="kontakt.html"
+            class="active">
+
+            Kontakt
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- HLAVNÁ ČASŤ -->
+
+<main>
+
+    <div class="contact-container">
+
+        <div class="heading">
+
+            <span>
+                Sme tu pre teba
+            </span>
+
+            <h1>
+                Kontakt 💌
+            </h1>
+
+            <p>
+                Ak máš otázku alebo potrebuješ
+                poradiť, pokojne nás kontaktuj.
+            </p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <!-- EMAIL -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    📧
+                </div>
+
+                <h2>
+                    E-mail
+                </h2>
+
+                <p>
+
+                    <a href="mailto:naramkydominiky@centrum.sk">
+                        naramkydominiky@centrum.sk
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <!-- FACEBOOK -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    📘
+                </div>
+
+                <h2>
+                    Facebook
+                </h2>
+
+                <p>
+
+                    <a
+                        href="https://www.facebook.com/share/1CUwvycF3o/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        Náramky Od dominiky
+
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <!-- ADRESA -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    📍
+                </div>
+
+                <h2>
+                    Adresa
+                </h2>
+
+                <p>
+                    Peklina 7
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="back-button">
+
+            ← Späť na domov
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+
+        © 2026
+
+        <strong>
+            Dominikine náramky
+        </strong>
+
+        · Vyrobené s 💕
+
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   PIATOK
+========================= */
+
+function isFriday() {
+
+    return new Date().getDay() === 5;
+
+}
+
+
+/* =========================
+   AKCIA
+========================= */
+
+function updateSale() {
+
+    if (isFriday()) {
+
+        document.body.classList.add(
+            "friday-sale"
+        );
+
+        document.getElementById(
+            "saleText"
+        ).textContent =
+            "🔥 DNES JE PIATOK -70 % 🔥";
+
+    } else {
+
+        document.body.classList.remove(
+            "friday-sale"
+        );
+
+        document.getElementById(
+            "saleText"
+        ).textContent =
+            "🔥 V PIATOK -70 % NA VŠETKY NÁRAMKY";
+
+    }
+
+}
+
+
+/* =========================
+   ODPOČET
+========================= */
+
+function updateCountdown() {
+
+    const now =
+        new Date();
+
+    let target =
+        new Date(now);
+
+
+    if (isFriday()) {
+
+        target.setHours(
+            23,
+            59,
+            59,
+            999
+        );
+
+    } else {
+
+        const daysUntilFriday =
+            (5 - now.getDay() + 7) % 7;
+
+        target.setDate(
+            now.getDate()
+            +
+            daysUntilFriday
+        );
+
+        target.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+    }
+
+
+    const difference =
+        target - now;
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                difference /
+                (1000 * 60 * 60)
+            ) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                difference /
+                (1000 * 60)
+            ) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                difference /
+                1000
+            ) % 60
+        );
+
+
+    document.getElementById(
+        "countdown"
+    ).textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+
+    updateSale();
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+</script>
+
+</body>
+</html>
+
+Hotovo — "kontakt.html" má e-mail, Facebook aj adresu a zachováva rovnaký vzhľad a piatkovú akciu ako ostatné stránky.
