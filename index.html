@@ -1,77 +1,1167 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dominikine náramky</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
+<title>Dominikine náramky 💕</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff8fc;
+    color: #25212a;
+    line-height: 1.6;
+}
+
+/* =========================
+   HORNÁ AKCIA
+========================= */
+
+.sale-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: linear-gradient(
+        90deg,
+        #e83f91,
+        #ff6eae,
+        #e83f91
+    );
+
+    color: white;
+    text-align: center;
+
+    padding: 10px 15px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#countdown {
+    display: inline-block;
+
+    margin-left: 10px;
+    padding: 4px 10px;
+
+    background: rgba(255,255,255,.95);
+    color: #d93682;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+}
+
+.black-friday {
+    display: none;
+
+    margin-left: 10px;
+    padding: 4px 12px;
+
+    background: #111;
+    color: white;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+body.friday-sale .black-friday {
+    display: inline-block;
+
+    animation:
+        blackFridayBlink
+        .8s
+        infinite
+        alternate;
+}
+
+@keyframes blackFridayBlink {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
     }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: #f8f5f2;
-      color: #333;
-      text-align: center;
+    to {
+        opacity: .35;
+        transform: scale(1.06);
     }
 
-    .container {
-      max-width: 500px;
-      padding: 40px 25px;
+}
+
+body.friday-sale .sale-bar {
+    background:
+        linear-gradient(
+            90deg,
+            #050505,
+            #222,
+            #050505
+        );
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 41px;
+    z-index: 999;
+
+    background: rgba(255,255,255,.92);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+        1px solid #f1dce8;
+
+    padding: 16px 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+.logo {
+    color: #df438b;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+
+    gap: 5px;
+
+    align-items: center;
+}
+
+nav a {
+    color: #4a4149;
+
+    text-decoration: none;
+
+    padding: 9px 15px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+nav a:hover {
+    background: #fff0f7;
+
+    color: #df438b;
+}
+
+nav a.active {
+    background: #df438b;
+
+    color: white;
+
+    box-shadow:
+        0 5px 15px
+        rgba(223,67,139,.25);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 570px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #ffd8e9 0,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            #ffe8f2 0,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff1f7,
+            #fff
+        );
+}
+
+.hero-content {
+    max-width: 750px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 16px;
+
+    margin-bottom: 20px;
+
+    background: white;
+
+    color: #df438b;
+
+    border:
+        1px solid #f3c7dc;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 25px
+        rgba(190,70,120,.08);
+}
+
+.hero h1 {
+    font-size:
+        clamp(42px, 7vw, 72px);
+
+    line-height: 1.05;
+
+    color: #241f27;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #df438b;
+}
+
+.hero p {
+    max-width: 600px;
+
+    margin:
+        0 auto 30px;
+
+    color: #6d626b;
+
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 24px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    transition: .25s;
+}
+
+.button-primary {
+    background: #df438b;
+
+    color: white;
+
+    box-shadow:
+        0 10px 25px
+        rgba(223,67,139,.25);
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+
+    background: #cc327b;
+}
+
+.button-secondary {
+    background: white;
+
+    color: #df438b;
+
+    border:
+        1px solid #f0c9dc;
+}
+
+.button-secondary:hover {
+    background: #fff3f8;
+}
+
+/* =========================
+   SEKcie
+========================= */
+
+section {
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 85px 20px;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.section-heading span {
+    color: #df438b;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 5px;
+
+    color: #29232b;
+
+    font-size:
+        clamp(30px, 5vw, 42px);
+}
+
+.section-heading p {
+    margin-top: 8px;
+
+    color: #81757e;
+}
+
+/* =========================
+   PRODUKTY
+========================= */
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.product {
+    position: relative;
+
+    background: white;
+
+    border:
+        1px solid #f2dce7;
+
+    border-radius: 24px;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px
+        rgba(40,20,30,.06);
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(40,20,30,.10);
+}
+
+.product-image {
+    height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #ffe0ed
+        );
+
+    border-radius: 18px;
+
+    font-size: 90px;
+
+    margin-bottom: 20px;
+}
+
+.product h3 {
+    color: #29232b;
+
+    font-size: 21px;
+
+    margin-bottom: 5px;
+}
+
+.product-description {
+    color: #837780;
+
+    font-size: 14px;
+
+    min-height: 45px;
+}
+
+.price-box {
+    margin: 18px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.normal-price {
+    color: #df438b;
+
+    font-size: 23px;
+
+    font-weight: 800;
+}
+
+.old-price {
+    display: none;
+
+    color: #999;
+
+    text-decoration: line-through;
+
+    font-size: 14px;
+}
+
+.discount-price {
+    display: none;
+
+    color: #df438b;
+
+    font-size: 24px;
+
+    font-weight: 900;
+}
+
+.product button {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 13px;
+
+    background: #df438b;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.product button:hover {
+    background: #c92f78;
+
+    transform: translateY(-1px);
+}
+
+body.friday-sale .normal-price {
+    display: none;
+}
+
+body.friday-sale .old-price {
+    display: inline;
+}
+
+body.friday-sale .discount-price {
+    display: inline;
+}
+
+/* =========================
+   KONTAKT
+========================= */
+
+.contact-box {
+    max-width: 700px;
+
+    margin: auto;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #fff
+        );
+
+    border:
+        1px solid #f0d9e5;
+
+    border-radius: 25px;
+
+    padding: 45px 25px;
+}
+
+.contact-box .icon {
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+.contact-box h2 {
+    color: #df438b;
+
+    margin-bottom: 10px;
+}
+
+.contact-box p {
+    color: #756a72;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #211c22;
+
+    color: #cfc5cc;
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+}
+
+footer strong {
+    color: white;
+}
+
+/* =========================
+   MOBIL
+========================= */
+
+@media (max-width: 800px) {
+
+    header {
+        flex-direction: column;
+
+        padding: 14px 15px;
+
+        top: 39px;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 15px;
+    nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
     }
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #666;
-      margin-bottom: 30px;
+    .products {
+        grid-template-columns: 1fr;
+
+        max-width: 450px;
+
+        margin: auto;
     }
 
-    .refresh {
-      display: inline-block;
-      padding: 13px 28px;
-      border: none;
-      border-radius: 30px;
-      background: #333;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.2s;
+    .hero {
+        min-height: 520px;
+
+        padding: 70px 20px;
     }
 
-    .refresh:hover {
-      opacity: 0.8;
+    .hero h1 {
+        font-size: 45px;
     }
-  </style>
+
+    .product-image {
+        height: 200px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .sale-bar {
+        font-size: 12px;
+    }
+
+    #countdown {
+        display: inline-block;
+
+        margin: 5px 2px 0;
+    }
+
+    .black-friday {
+        margin-left: 2px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 60px 15px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Dominikine náramky</h1>
+<!-- =========================
+     HORNÁ AKCIA
+========================= -->
+
+<div class="sale-bar">
+
+    <span id="saleText">
+        🔥 V PIATOK -70 % NA VŠETKY NÁRAMKY
+    </span>
+
+    <span id="countdown">
+        Načítavam...
+    </span>
+
+    <span class="black-friday">
+        🖤 BLACK FRIDAY
+    </span>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <a href="index.html" class="logo">
+        Dominikine náramky 💕
+    </a>
+
+    <nav>
+
+        <a
+            href="index.html"
+            class="active">
+            Domov
+        </a>
+
+        <a href="#naramky">
+            Náramky
+        </a>
+
+        <a href="kosik.html">
+            🛒 Košík
+        </a>
+
+        <a href="#kontakt">
+            Kontakt
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     DOMOV
+========================= -->
+
+<section
+    id="domov"
+    class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            ✨ Ručne vyrábané s láskou
+        </div>
+
+        <h1>
+
+            Náramky, ktoré
+            <span>žiaria.</span>
+
+        </h1>
+
+        <p>
+
+            Objav krásne ručne vyrábané náramky
+            Dominikine náramky. Vyber si svoj obľúbený
+            kúsok a poteš seba alebo niekoho blízkeho. 💕
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#naramky"
+                class="button button-primary">
+
+                Pozrieť náramky →
+
+            </a>
+
+            <a
+                href="kosik.html"
+                class="button button-secondary">
+
+                🛒 Košík
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUKTY
+========================= -->
+
+<section id="naramky">
+
+    <div class="section-heading">
+
+        <span>
+            Naša kolekcia
+        </span>
+
+        <h2>
+            Vyber si svoj náramok 💖
+        </h2>
+
+        <p>
+            Jednoduché, krásne a ručne vyrábané.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- KRÁSNE NÁRAMKY -->
+
+        <article class="product">
+
+            <div class="product-image">
+                📿
+            </div>
+
+            <h3>
+                Krásne Náramky
+            </h3>
+
+            <p class="product-description">
+                Krásny náramok vhodný na každodenné nosenie.
+            </p>
+
+
+            <div class="price-box">
+
+                <span class="old-price">
+                    1,50 €
+                </span>
+
+                <span class="normal-price">
+                    1,50 €
+                </span>
+
+                <span class="discount-price">
+                    0,45 €
+                </span>
+
+            </div>
+
+
+            <button
+                onclick="addToCart(
+                    'Krásne Náramky',
+                    1.50
+                )">
+
+                Pridať do košíka
+
+            </button>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     KONTAKT
+========================= -->
+
+<section id="kontakt">
+
+    <div class="contact-box">
+
+        <div class="icon">
+            💌
+        </div>
+
+        <h2>
+            Máš otázku?
+        </h2>
+
+        <p>
+            Ak potrebuješ poradiť s výberom náramku,
+            radi ti odpovieme. 💕
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
 
     <p>
-      Stránka je momentálne nedostupná.<br>
-      Pripravujeme pre vás niečo nové.
+
+        © 2026
+        <strong>
+            Dominikine náramky
+        </strong>
+
+        · Vyrobené s 💕
+
     </p>
 
-    <button class="refresh" onclick="location.reload()">
-      ↻ Refresh
-    </button>
-  </div>
+</footer>
+
+
+<script>
+
+/* =========================
+   PIATOK
+========================= */
+
+function isFriday() {
+
+    return new Date().getDay() === 5;
+
+}
+
+
+/* =========================
+   AKTIVÁCIA ZĽAVY
+========================= */
+
+function updateSale() {
+
+    if (isFriday()) {
+
+        document.body.classList.add(
+            "friday-sale"
+        );
+
+        document.getElementById(
+            "saleText"
+        ).textContent =
+            "🔥 DNES JE PIATOK -70 % 🔥";
+
+    } else {
+
+        document.body.classList.remove(
+            "friday-sale"
+        );
+
+        document.getElementById(
+            "saleText"
+        ).textContent =
+            "🔥 V PIATOK -70 % NA VŠETKY NÁRAMKY";
+
+    }
+
+}
+
+
+/* =========================
+   ODPOČET
+========================= */
+
+function updateCountdown() {
+
+    const now =
+        new Date();
+
+    let target =
+        new Date(now);
+
+
+    if (isFriday()) {
+
+        target.setHours(
+            23,
+            59,
+            59,
+            999
+        );
+
+    } else {
+
+        const daysUntilFriday =
+            (5 - now.getDay() + 7) % 7;
+
+        target.setDate(
+            now.getDate()
+            +
+            daysUntilFriday
+        );
+
+        target.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+    }
+
+
+    const difference =
+        target - now;
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                difference /
+                (1000 * 60 * 60)
+            ) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                difference /
+                (1000 * 60)
+            ) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                difference /
+                1000
+            ) % 60
+        );
+
+
+    document.getElementById(
+        "countdown"
+    ).textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+
+    updateSale();
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================
+   PRIDANIE DO KOŠÍKA
+========================= */
+
+function addToCart(
+    name,
+    normalPrice
+) {
+
+    let price;
+
+
+    if (isFriday()) {
+
+        price =
+            normalPrice * 0.30;
+
+    } else {
+
+        price =
+            normalPrice;
+
+    }
+
+
+    /*
+       Uložíme produkt do
+       localStorage, aby ho
+       vedel načítať kosik.html.
+    */
+
+    let cart =
+        JSON.parse(
+            localStorage.getItem(
+                "dominikinEshopCart"
+            )
+        ) || [];
+
+
+    cart.push({
+
+        name: name,
+
+        price: price
+
+    });
+
+
+    localStorage.setItem(
+        "dominikinEshopCart",
+        JSON.stringify(cart)
+    );
+
+
+    /*
+       Po pridaní produktu
+       ideme priamo na kosik.html.
+    */
+
+    window.location.href =
+        "kosik.html";
+
+}
+
+</script>
 
 </body>
 </html>
