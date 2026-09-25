@@ -69,6 +69,7 @@ body.friday-sale .black-friday {
 }
 
 @keyframes blackFridayBlink {
+
     from {
         opacity: 1;
         transform: scale(1);
@@ -78,6 +79,7 @@ body.friday-sale .black-friday {
         opacity: .35;
         transform: scale(1.06);
     }
+
 }
 
 body.friday-sale .sale-bar {
@@ -227,17 +229,6 @@ nav a.active {
     text-decoration: none;
     font-weight: 800;
     transition: .25s;
-}
-
-.button-primary {
-    background: #df438b;
-    color: white;
-    box-shadow: 0 10px 25px rgba(223,67,139,.25);
-}
-
-.button-primary:hover {
-    transform: translateY(-2px);
-    background: #cc327b;
 }
 
 .button-secondary {
@@ -507,8 +498,12 @@ footer strong {
 
 <header>
 
-    <a href="index.html" class="logo">
+    <a
+        href="index.html"
+        class="logo">
+
         Dominikine náramky 💕
+
     </a>
 
     <nav>
@@ -516,15 +511,21 @@ footer strong {
         <a
             href="index.html"
             class="active">
+
             Domov
+
         </a>
 
         <a href="kosik.html">
+
             🛒 Košík
+
         </a>
 
         <a href="kontakt.html">
+
             Kontakt
+
         </a>
 
     </nav>
@@ -533,6 +534,7 @@ footer strong {
 
 
 <main>
+
 
 <!-- DOMOV -->
 
@@ -547,28 +549,28 @@ footer strong {
         </div>
 
         <h1>
+
             Náramky, ktoré
             <span>žiaria.</span>
+
         </h1>
 
         <p>
+
             Objav krásne ručne vyrábané náramky
             Dominikine náramky. Vyber si svoj obľúbený
             kúsok a poteš seba alebo niekoho blízkeho. 💕
+
         </p>
 
         <div class="hero-buttons">
 
             <a
-                href="#produkty"
-                class="button button-primary">
-                Pozrieť náramky →
-            </a>
-
-            <a
                 href="kosik.html"
                 class="button button-secondary">
+
                 🛒 Košík
+
             </a>
 
         </div>
@@ -600,6 +602,7 @@ footer strong {
 
 
     <div class="products">
+
 
         <!-- KRÁSNE NÁRAMKY -->
 
@@ -645,9 +648,101 @@ footer strong {
 
         </article>
 
+
+        <!-- KRÁSNE NÁRAMKY S MENOM -->
+
+        <article class="product">
+
+            <div class="product-image">
+                💕
+            </div>
+
+            <h3>
+                Krásne Náramky s meno
+            </h3>
+
+            <p class="product-description">
+                Krásny náramok s menom podľa tvojho výberu.
+            </p>
+
+            <div class="price-box">
+
+                <span class="old-price">
+                    1,50 €
+                </span>
+
+                <span class="normal-price">
+                    1,50 €
+                </span>
+
+                <span class="discount-price">
+                    0,45 €
+                </span>
+
+            </div>
+
+            <button
+                onclick="addToCart(
+                    'Krásne Náramky s meno',
+                    1.50
+                )">
+
+                Pridať do košíka
+
+            </button>
+
+        </article>
+
+
+        <!-- RÔZNE PRÍVESKY -->
+
+        <article class="product">
+
+            <div class="product-image">
+                ✨
+            </div>
+
+            <h3>
+                Rôzne prívesky
+            </h3>
+
+            <p class="product-description">
+                Rôzne krásne prívesky na náramky.
+            </p>
+
+            <div class="price-box">
+
+                <span class="old-price">
+                    2,00 €
+                </span>
+
+                <span class="normal-price">
+                    2,00 €
+                </span>
+
+                <span class="discount-price">
+                    0,60 €
+                </span>
+
+            </div>
+
+            <button
+                onclick="addToCart(
+                    'Rôzne prívesky',
+                    2.00
+                )">
+
+                Pridať do košíka
+
+            </button>
+
+        </article>
+
+
     </div>
 
 </section>
+
 
 </main>
 
@@ -657,11 +752,15 @@ footer strong {
 <footer>
 
     <p>
+
         © 2026
+
         <strong>
             Dominikine náramky
         </strong>
+
         · Vyrobené s 💕
+
     </p>
 
 </footer>
