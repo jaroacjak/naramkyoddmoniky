@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Košík – Dominikine náramky 💕</title>
+<title>Dominikine náramky 💕</title>
 
 <style>
 
@@ -26,76 +26,49 @@ body {
 }
 
 /* =========================
-   HORNÁ LIŠTA
+   HORNÁ AKCIA
 ========================= */
 
 .sale-bar {
     position: sticky;
     top: 0;
     z-index: 1000;
-
-    background: linear-gradient(
-        90deg,
-        #e83f91,
-        #ff6eae,
-        #e83f91
-    );
-
+    background: linear-gradient(90deg, #e83f91, #ff6eae, #e83f91);
     color: white;
     text-align: center;
-
     padding: 10px 15px;
-
     font-size: 14px;
     font-weight: 700;
 }
 
 #countdown {
     display: inline-block;
-
     margin-left: 10px;
     padding: 4px 10px;
-
     background: rgba(255,255,255,.95);
-
     color: #d93682;
-
     border-radius: 20px;
-
     font-size: 13px;
 }
 
 .black-friday {
     display: none;
-
     margin-left: 10px;
     padding: 4px 12px;
-
     background: #111;
-
     color: white;
-
     border-radius: 20px;
-
     font-size: 13px;
-
     font-weight: 900;
-
     letter-spacing: 1px;
 }
 
 body.friday-sale .black-friday {
     display: inline-block;
-
-    animation:
-        blackFridayBlink
-        .8s
-        infinite
-        alternate;
+    animation: blackFridayBlink .8s infinite alternate;
 }
 
 @keyframes blackFridayBlink {
-
     from {
         opacity: 1;
         transform: scale(1);
@@ -105,17 +78,15 @@ body.friday-sale .black-friday {
         opacity: .35;
         transform: scale(1.06);
     }
-
 }
 
 body.friday-sale .sale-bar {
-    background:
-        linear-gradient(
-            90deg,
-            #050505,
-            #222,
-            #050505
-        );
+    background: linear-gradient(
+        90deg,
+        #050505,
+        #222,
+        #050505
+    );
 }
 
 /* =========================
@@ -124,381 +95,295 @@ body.friday-sale .sale-bar {
 
 header {
     position: sticky;
-
     top: 41px;
-
     z-index: 999;
-
-    background:
-        rgba(255,255,255,.92);
-
-    backdrop-filter:
-        blur(15px);
-
-    border-bottom:
-        1px solid #f1dce8;
-
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #f1dce8;
     padding: 16px 6%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 25px;
 }
 
 .logo {
     color: #df438b;
-
     font-size: 24px;
-
     font-weight: 800;
-
     text-decoration: none;
-
     white-space: nowrap;
 }
 
 nav {
     display: flex;
-
     gap: 5px;
-
     align-items: center;
 }
 
 nav a {
     color: #4a4149;
-
     text-decoration: none;
-
     padding: 9px 15px;
-
     border-radius: 12px;
-
     font-size: 14px;
-
     font-weight: 700;
-
     transition: .25s;
 }
 
 nav a:hover {
     background: #fff0f7;
-
     color: #df438b;
 }
 
 nav a.active {
     background: #df438b;
-
     color: white;
-
-    box-shadow:
-        0 5px 15px
-        rgba(223,67,139,.25);
+    box-shadow: 0 5px 15px rgba(223,67,139,.25);
 }
 
 /* =========================
-   HLAVNÁ ČASŤ
+   HERO
 ========================= */
 
-main {
-    min-height: 70vh;
-
-    padding: 80px 20px;
-}
-
-.cart-container {
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.heading {
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 80px 20px;
 
-    margin-bottom: 40px;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #ffd8e9 0,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            #ffe8f2 0,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fff1f7,
+            #fff
+        );
 }
 
-.heading span {
+.hero-content {
+    max-width: 750px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    background: white;
     color: #df438b;
-
+    border: 1px solid #f3c7dc;
+    border-radius: 30px;
     font-size: 13px;
-
     font-weight: 800;
+    box-shadow: 0 8px 25px rgba(190,70,120,.08);
+}
 
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: 1.05;
+    color: #241f27;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #df438b;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #6d626b;
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .25s;
+}
+
+.button-primary {
+    background: #df438b;
+    color: white;
+    box-shadow: 0 10px 25px rgba(223,67,139,.25);
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+    background: #cc327b;
+}
+
+.button-secondary {
+    background: white;
+    color: #df438b;
+    border: 1px solid #f0c9dc;
+}
+
+.button-secondary:hover {
+    background: #fff3f8;
+}
+
+/* =========================
+   PRODUKTY
+========================= */
+
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 85px 20px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading span {
+    color: #df438b;
+    font-size: 13px;
+    font-weight: 800;
     text-transform: uppercase;
-
     letter-spacing: 1.5px;
 }
 
-.heading h1 {
+.section-heading h2 {
     margin-top: 5px;
-
-    font-size:
-        clamp(34px, 6vw, 50px);
-
     color: #29232b;
+    font-size: clamp(30px, 5vw, 42px);
 }
 
-.heading p {
+.section-heading p {
     margin-top: 8px;
-
     color: #81757e;
 }
 
-/* =========================
-   KOŠÍK
-========================= */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
 
-.cart-box {
+.product {
+    position: relative;
     background: white;
-
-    border:
-        1px solid #f0dce6;
-
+    border: 1px solid #f2dce7;
     border-radius: 24px;
-
-    padding: 30px;
-
-    box-shadow:
-        0 12px 35px
-        rgba(40,20,30,.06);
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(40,20,30,.06);
+    transition: transform .3s, box-shadow .3s;
 }
 
-.empty-cart {
-    text-align: center;
-
-    padding: 50px 20px;
-
-    color: #8c8188;
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(40,20,30,.10);
 }
 
-.empty-cart-icon {
-    font-size: 55px;
-
-    margin-bottom: 10px;
-}
-
-.cart-item {
+.product-image {
+    height: 220px;
     display: flex;
-
     align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding: 18px 0;
-
-    border-bottom:
-        1px solid #f1e5eb;
-}
-
-.cart-item-left {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-}
-
-.cart-item-icon {
-    width: 65px;
-
-    height: 65px;
-
-    display: flex;
-
-    align-items: center;
-
     justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f7,
-            #ffe0ed
-        );
-
-    border-radius: 15px;
-
-    font-size: 30px;
+    background: linear-gradient(135deg,#fff0f7,#ffe0ed);
+    border-radius: 18px;
+    font-size: 90px;
+    margin-bottom: 20px;
 }
 
-.cart-item-name {
-    font-weight: 800;
-
+.product h3 {
     color: #29232b;
+    font-size: 21px;
+    margin-bottom: 5px;
 }
 
-.cart-item-price {
-    color: #df438b;
-
-    font-weight: 800;
-
-    margin-top: 3px;
+.product-description {
+    color: #837780;
+    font-size: 14px;
+    min-height: 45px;
 }
 
-.remove-button {
-    border: none;
-
-    background: #fff0f5;
-
-    color: #d53c82;
-
-    padding: 9px 13px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    font-weight: 700;
-
-    transition: .2s;
-}
-
-.remove-button:hover {
-    background: #ffe0ec;
-}
-
-/* =========================
-   CELKOVÁ CENA
-========================= */
-
-.total-box {
+.price-box {
+    margin: 18px 0;
     display: flex;
-
-    justify-content: space-between;
-
     align-items: center;
+    gap: 8px;
+}
 
-    margin-top: 25px;
-
-    padding-top: 20px;
-
-    border-top:
-        1px solid #f0e2e9;
-
+.normal-price {
+    color: #df438b;
     font-size: 23px;
+    font-weight: 800;
+}
 
+.old-price {
+    display: none;
+    color: #999;
+    text-decoration: line-through;
+    font-size: 14px;
+}
+
+.discount-price {
+    display: none;
+    color: #df438b;
+    font-size: 24px;
     font-weight: 900;
 }
 
-.total-price {
-    color: #df438b;
-}
-
-/* =========================
-   OBJEDNÁVKA
-========================= */
-
-.checkout {
-    margin-top: 30px;
-
-    padding-top: 30px;
-
-    border-top:
-        1px solid #f0e2e9;
-}
-
-.checkout h2 {
-    margin-bottom: 18px;
-
-    color: #29232b;
-}
-
-.checkout input {
+.product button {
     width: 100%;
-
-    padding: 14px 15px;
-
-    margin-bottom: 12px;
-
-    border:
-        1px solid #ead9e2;
-
-    border-radius: 12px;
-
-    outline: none;
-
-    background: #fffafd;
-
-    font-size: 14px;
-
-    transition: .2s;
-}
-
-.checkout input:focus {
-    border-color: #df438b;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(223,67,139,.10);
-}
-
-.order-button {
-    width: 100%;
-
     border: none;
-
     border-radius: 13px;
-
-    padding: 15px;
-
+    padding: 13px;
     background: #df438b;
-
     color: white;
-
-    font-size: 15px;
-
+    font-size: 14px;
     font-weight: 800;
-
     cursor: pointer;
-
     transition: .25s;
 }
 
-.order-button:hover {
+.product button:hover {
     background: #c92f78;
-
     transform: translateY(-1px);
 }
 
-/* =========================
-   SPÄŤ
-========================= */
-
-.back-button {
-    display: block;
-
-    width: fit-content;
-
-    margin: 25px auto 0;
-
-    padding: 12px 20px;
-
-    background: white;
-
-    color: #df438b;
-
-    border:
-        1px solid #f0c9dc;
-
-    border-radius: 13px;
-
-    text-decoration: none;
-
-    font-weight: 800;
-
-    transition: .25s;
+body.friday-sale .normal-price {
+    display: none;
 }
 
-.back-button:hover {
-    background: #fff0f7;
+body.friday-sale .old-price {
+    display: inline;
+}
+
+body.friday-sale .discount-price {
+    display: inline;
 }
 
 /* =========================
@@ -507,13 +392,10 @@ main {
 
 footer {
     background: #211c22;
-
     color: #cfc5cc;
-
     text-align: center;
-
     padding: 30px 20px;
-
+    margin-top: 20px;
     font-size: 14px;
 }
 
@@ -529,16 +411,32 @@ footer strong {
 
     header {
         flex-direction: column;
-
         padding: 14px 15px;
-
         top: 39px;
     }
 
     nav {
         flex-wrap: wrap;
-
         justify-content: center;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: auto;
+    }
+
+    .hero {
+        min-height: 520px;
+        padding: 70px 20px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .product-image {
+        height: 200px;
     }
 
 }
@@ -551,7 +449,6 @@ footer strong {
 
     #countdown {
         display: inline-block;
-
         margin: 5px 2px 0;
     }
 
@@ -565,27 +462,19 @@ footer strong {
 
     nav a {
         padding: 8px 10px;
-
         font-size: 13px;
     }
 
-    main {
-        padding:
-            55px 15px;
+    .hero h1 {
+        font-size: 38px;
     }
 
-    .cart-box {
-        padding: 20px;
+    .hero p {
+        font-size: 16px;
     }
 
-    .cart-item {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-    .remove-button {
-        align-self: flex-end;
+    section {
+        padding: 60px 15px;
     }
 
 }
@@ -595,10 +484,7 @@ footer strong {
 
 <body>
 
-
-<!-- =========================
-     HORNÁ AKCIA
-========================= -->
+<!-- HORNÁ AKCIA -->
 
 <div class="sale-bar">
 
@@ -617,40 +503,27 @@ footer strong {
 </div>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
-    <a
-        href="index.html"
-        class="logo">
-
+    <a href="index.html" class="logo">
         Dominikine náramky 💕
-
     </a>
-
 
     <nav>
 
-        <a href="index.html">
+        <a
+            href="index.html"
+            class="active">
             Domov
         </a>
 
-        <a href="index.html#naramky">
-            Náramky
-        </a>
-
-        <a
-            href="kosik.html"
-            class="active">
-
+        <a href="kosik.html">
             🛒 Košík
-
         </a>
 
-        <a href="index.html#kontakt">
+        <a href="kontakt.html">
             Kontakt
         </a>
 
@@ -659,142 +532,136 @@ footer strong {
 </header>
 
 
-<!-- =========================
-     HLAVNÁ ČASŤ
-========================= -->
-
 <main>
 
-    <div class="cart-container">
+<!-- DOMOV -->
 
+<section
+    id="domov"
+    class="hero">
 
-        <div class="heading">
+    <div class="hero-content">
 
-            <span>
-                Tvoja objednávka
-            </span>
+        <div class="hero-badge">
+            ✨ Ručne vyrábané s láskou
+        </div>
 
-            <h1>
+        <h1>
+            Náramky, ktoré
+            <span>žiaria.</span>
+        </h1>
+
+        <p>
+            Objav krásne ručne vyrábané náramky
+            Dominikine náramky. Vyber si svoj obľúbený
+            kúsok a poteš seba alebo niekoho blízkeho. 💕
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#produkty"
+                class="button button-primary">
+                Pozrieť náramky →
+            </a>
+
+            <a
+                href="kosik.html"
+                class="button button-secondary">
                 🛒 Košík
-            </h1>
-
-            <p>
-                Skontroluj svoje produkty
-                pred objednaním. 💕
-            </p>
+            </a>
 
         </div>
-
-
-        <div class="cart-box">
-
-
-            <!-- PRODUKTY -->
-
-            <div id="cartItems">
-
-                <!-- JavaScript sem vloží produkty -->
-
-            </div>
-
-
-            <!-- CELKOM -->
-
-            <div
-                class="total-box"
-                id="totalBox">
-
-                <span>
-                    Spolu
-                </span>
-
-                <span
-                    class="total-price"
-                    id="totalPrice">
-
-                    0,00 €
-
-                </span>
-
-            </div>
-
-
-            <!-- OBJEDNÁVKA -->
-
-            <div
-                class="checkout"
-                id="checkout">
-
-                <h2>
-                    Údaje pre doručenie 📦
-                </h2>
-
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Meno a priezvisko"
-                >
-
-
-                <input
-                    type="text"
-                    id="address"
-                    placeholder="Adresa doručenia"
-                >
-
-
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Telefón"
-                >
-
-
-                <button
-                    class="order-button"
-                    onclick="sendOrder()">
-
-                    Objednať na dobierku 📦
-
-                </button>
-
-            </div>
-
-
-        </div>
-
-
-        <a
-            href="index.html#naramky"
-            class="back-button">
-
-            ← Späť na náramky
-
-        </a>
-
 
     </div>
+
+</section>
+
+
+<!-- PRODUKTY -->
+
+<section id="produkty">
+
+    <div class="section-heading">
+
+        <span>
+            Naša kolekcia
+        </span>
+
+        <h2>
+            Vyber si svoj náramok 💖
+        </h2>
+
+        <p>
+            Jednoduché, krásne a ručne vyrábané.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+        <!-- KRÁSNE NÁRAMKY -->
+
+        <article class="product">
+
+            <div class="product-image">
+                📿
+            </div>
+
+            <h3>
+                Krásne Náramky
+            </h3>
+
+            <p class="product-description">
+                Krásny náramok vhodný na každodenné nosenie.
+            </p>
+
+            <div class="price-box">
+
+                <span class="old-price">
+                    1,50 €
+                </span>
+
+                <span class="normal-price">
+                    1,50 €
+                </span>
+
+                <span class="discount-price">
+                    0,45 €
+                </span>
+
+            </div>
+
+            <button
+                onclick="addToCart(
+                    'Krásne Náramky',
+                    1.50
+                )">
+
+                Pridať do košíka
+
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
 
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
     <p>
-
         © 2026
-
         <strong>
             Dominikine náramky
         </strong>
-
         · Vyrobené s 💕
-
     </p>
 
 </footer>
@@ -814,7 +681,7 @@ function isFriday() {
 
 
 /* =========================
-   AKCIA
+   AKTIVÁCIA ZĽAVY
 ========================= */
 
 function updateSale() {
@@ -947,172 +814,29 @@ setInterval(
 
 
 /* =========================
-   NAČÍTANIE KOŠÍKA
+   PRIDANIE DO KOŠÍKA
 ========================= */
 
-function loadCart() {
+function addToCart(
+    name,
+    normalPrice
+) {
 
-    const cart =
-        JSON.parse(
-            localStorage.getItem(
-                "dominikinEshopCart"
-            )
-        ) || [];
+    let price;
 
 
-    const cartItems =
-        document.getElementById(
-            "cartItems"
-        );
+    if (isFriday()) {
 
+        price =
+            normalPrice * 0.30;
 
-    const checkout =
-        document.getElementById(
-            "checkout"
-        );
+    } else {
 
-
-    const totalBox =
-        document.getElementById(
-            "totalBox"
-        );
-
-
-    const totalPrice =
-        document.getElementById(
-            "totalPrice"
-        );
-
-
-    /* Prázdny košík */
-
-    if (cart.length === 0) {
-
-        cartItems.innerHTML = `
-
-            <div class="empty-cart">
-
-                <div class="empty-cart-icon">
-                    🛒
-                </div>
-
-                <h2>
-                    Košík je prázdny
-                </h2>
-
-                <p>
-                    Zatiaľ tu nemáš žiadny náramok. 💕
-                </p>
-
-            </div>
-
-        `;
-
-
-        checkout.style.display =
-            "none";
-
-        totalBox.style.display =
-            "none";
-
-        return;
+        price =
+            normalPrice;
 
     }
 
-
-    cartItems.innerHTML = "";
-
-
-    let total = 0;
-
-
-    cart.forEach(
-        (item, index) => {
-
-            total +=
-                Number(item.price);
-
-
-            const itemElement =
-                document.createElement(
-                    "div"
-                );
-
-
-            itemElement.className =
-                "cart-item";
-
-
-            itemElement.innerHTML = `
-
-                <div class="cart-item-left">
-
-                    <div class="cart-item-icon">
-                        📿
-                    </div>
-
-                    <div>
-
-                        <div class="cart-item-name">
-                            ${item.name}
-                        </div>
-
-                        <div class="cart-item-price">
-
-                            ${Number(item.price)
-                                .toFixed(2)
-                                .replace(".", ",")}
-
-                            €
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="remove-button"
-                    onclick="removeItem(${index})">
-
-                    Odstrániť
-
-                </button>
-
-            `;
-
-
-            cartItems.appendChild(
-                itemElement
-            );
-
-        }
-    );
-
-
-    totalPrice.textContent =
-        total
-            .toFixed(2)
-            .replace(".", ",")
-        + " €";
-
-
-    checkout.style.display =
-        "block";
-
-
-    totalBox.style.display =
-        "flex";
-
-}
-
-
-/* =========================
-   ODSTRÁNENIE PRODUKTU
-========================= */
-
-function removeItem(index) {
 
     let cart =
         JSON.parse(
@@ -1122,10 +846,13 @@ function removeItem(index) {
         ) || [];
 
 
-    cart.splice(
-        index,
-        1
-    );
+    cart.push({
+
+        name: name,
+
+        price: price
+
+    });
 
 
     localStorage.setItem(
@@ -1134,89 +861,14 @@ function removeItem(index) {
     );
 
 
-    loadCart();
+    window.location.href =
+        "kosik.html";
 
 }
-
-
-/* =========================
-   OBJEDNÁVKA
-========================= */
-
-function sendOrder() {
-
-    const name =
-        document.getElementById(
-            "name"
-        ).value.trim();
-
-
-    const address =
-        document.getElementById(
-            "address"
-        ).value.trim();
-
-
-    const phone =
-        document.getElementById(
-            "phone"
-        ).value.trim();
-
-
-    const cart =
-        JSON.parse(
-            localStorage.getItem(
-                "dominikinEshopCart"
-            )
-        ) || [];
-
-
-    if (
-        !name ||
-        !address ||
-        !phone
-    ) {
-
-        alert(
-            "Prosím, vyplň všetky údaje."
-        );
-
-        return;
-
-    }
-
-
-    if (cart.length === 0) {
-
-        alert(
-            "Košík je prázdny."
-        );
-
-        return;
-
-    }
-
-
-    /*
-       Zatiaľ iba potvrdíme objednávku.
-       Skutočné odosielanie objednávok
-       môžeme pridať neskôr.
-    */
-
-    alert(
-        "Objednávka bola pripravená na odoslanie na dobierku. 📦"
-    );
-
-}
-
-
-/* =========================
-   SPUSTENIE
-========================= */
-
-loadCart();
 
 </script>
 
 </body>
 </html>
+
+Hotovo — Náramky som odstránil z menu a Kontakt teraz otvára "kontakt.html". Ostatné funkcie vrátane košíka, piatkovej zľavy a odpočtu zostali.
