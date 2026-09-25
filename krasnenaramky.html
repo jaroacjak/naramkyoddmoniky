@@ -119,13 +119,12 @@
         }
 
         .product-image {
-            min-height: 350px;
+            width: 100%;
+            height: 350px;
             border-radius: 20px;
+            object-fit: cover;
+            display: block;
             background: linear-gradient(135deg, #ffd0e5, #fff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
         }
 
         body.friday-sale .product-image {
@@ -162,6 +161,10 @@
 
         .sale-price {
             color: #ff4f9a;
+        }
+
+        body.friday-sale .sale-price {
+            color: #ff82b8;
         }
 
         .btn {
@@ -217,7 +220,7 @@
             }
 
             .product-image {
-                min-height: 250px;
+                height: 300px;
             }
         }
     </style>
@@ -226,37 +229,48 @@
 <body>
 
     <div class="sale-bar">
+
         <div class="normal-sale">
-            ⏰ Akcia začína o: <span id="countdown"></span>
+            ⏰ Akcia začína o:
+            <span id="normalCountdown"></span>
         </div>
 
         <div class="black-friday">
             🖤 BLACK FRIDAY – 70% ZĽAVA NA VŠETKO!
-            ⏰ <span id="countdown"></span>
+            ⏰ <span id="blackFridayCountdown"></span>
         </div>
+
     </div>
 
     <header>
-        <div class="logo">💗 Dominikine náramky</div>
+
+        <div class="logo">
+            💗 Dominikine náramky
+        </div>
 
         <nav>
             <a href="index.html">Domov</a>
             <a href="kosik.html">🛒 Košík</a>
             <a href="kontakt.html">Kontakt</a>
         </nav>
+
     </header>
 
     <main class="container">
 
         <div class="product-box">
 
-            <div class="product-image">
-                💗
-            </div>
+            <img
+                class="product-image"
+                src="https://i.postimg.cc/Pq8zBspr/Naramky-od-Dominiky.jpg"
+                alt="Krásne Náramky"
+            >
 
             <div class="product-info">
 
-                <h1>Krásne Náramky</h1>
+                <h1>
+                    Krásne Náramky
+                </h1>
 
                 <p class="description">
                     Krásne ručne vyberané náramky, ktoré sa hodia na každý deň.
@@ -288,56 +302,97 @@
     </footer>
 
     <script>
+
         function isFriday() {
             return new Date().getDay() === 5;
         }
 
+
         function updateSale() {
+
             if (isFriday()) {
+
                 document.body.classList.add("friday-sale");
 
                 document.getElementById("price").innerHTML =
                     '<span class="old-price">1,50 €</span>' +
                     '<span class="sale-price">0,45 €</span>';
+
             } else {
+
                 document.body.classList.remove("friday-sale");
 
-                document.getElementById("price").innerHTML = "1,50 €";
+                document.getElementById("price").innerHTML =
+                    "1,50 €";
             }
         }
 
+
         function updateCountdown() {
+
             const now = new Date();
             let target = new Date();
 
             if (isFriday()) {
+
                 target.setHours(23, 59, 59, 999);
+
             } else {
-                const daysUntilFriday = (5 - now.getDay() + 7) % 7;
-                target.setDate(now.getDate() + (daysUntilFriday === 0 ? 7 : daysUntilFriday));
+
+                const daysUntilFriday =
+                    (5 - now.getDay() + 7) % 7;
+
+                target.setDate(
+                    now.getDate() +
+                    (daysUntilFriday === 0 ? 7 : daysUntilFriday)
+                );
+
                 target.setHours(0, 0, 0, 0);
             }
 
             const difference = target - now;
 
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((difference / (1000 * 60)) % 60);
-            const seconds = Math.floor((difference / 1000) % 60);
+            const days =
+                Math.floor(
+                    difference / (1000 * 60 * 60 * 24)
+                );
 
-            document.getElementById("countdown").textContent =
+            const hours =
+                Math.floor(
+                    (difference / (1000 * 60 * 60)) % 24
+                );
+
+            const minutes =
+                Math.floor(
+                    (difference / (1000 * 60)) % 60
+                );
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+            const text =
                 `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            document.getElementById("normalCountdown").textContent = text;
+            document.getElementById("blackFridayCountdown").textContent = text;
         }
 
+
         function addToCart() {
+
             const normalPrice = 1.50;
 
-            const price = isFriday()
-                ? normalPrice * 0.30
-                : normalPrice;
+            const price =
+                isFriday()
+                    ? normalPrice * 0.30
+                    : normalPrice;
 
             let cart =
-                JSON.parse(localStorage.getItem("dominikinEshopCart")) || [];
+                JSON.parse(
+                    localStorage.getItem("dominikinEshopCart")
+                ) || [];
 
             cart.push({
                 name: "Krásne Náramky",
@@ -352,14 +407,18 @@
             window.location.href = "kosik.html";
         }
 
+
         updateSale();
         updateCountdown();
 
         setInterval(() => {
+
             updateSale();
             updateCountdown();
+
         }, 1000);
+
     </script>
 
 </body>
-</html>
+    </html>
