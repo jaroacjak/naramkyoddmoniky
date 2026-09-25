@@ -161,7 +161,7 @@
         .product-card {
             background: rgba(255, 255, 255, 0.85);
             border-radius: 22px;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             transition: transform 0.2s;
@@ -176,7 +176,6 @@
             transform: translateY(-5px);
         }
 
-        /* Klikateľná časť produktu */
         .product-link {
             display: block;
             text-decoration: none;
@@ -184,9 +183,13 @@
             cursor: pointer;
         }
 
-        .product-icon {
-            font-size: 65px;
+        .product-image {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 18px;
             margin-bottom: 15px;
+            display: block;
         }
 
         .product-card h3 {
@@ -220,8 +223,8 @@
         }
 
         .cart-btn {
-            margin-top: 5px;
             width: 100%;
+            margin-top: 5px;
         }
 
         footer {
@@ -251,12 +254,17 @@
             .product-grid {
                 grid-template-columns: 1fr;
             }
+
+            .product-image {
+                height: 260px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- AKCIOVÝ PANEL -->
     <div class="sale-bar">
 
         <div class="normal-sale">
@@ -271,6 +279,8 @@
 
     </div>
 
+
+    <!-- HLAVIČKA -->
     <header>
 
         <div class="logo">
@@ -285,6 +295,8 @@
 
     </header>
 
+
+    <!-- ÚVOD -->
     <section class="hero">
 
         <h1>
@@ -301,6 +313,8 @@
 
     </section>
 
+
+    <!-- PRODUKTY -->
     <section class="products">
 
         <h2>
@@ -309,14 +323,17 @@
 
         <div class="product-grid">
 
+
             <!-- KRÁSNE NÁRAMKY -->
             <div class="product-card">
 
                 <a href="krasnenaramky.html" class="product-link">
 
-                    <div class="product-icon">
-                        💗
-                    </div>
+                    <img
+                        src="https://i.postimg.cc/Pq8zBspr/Naramky-od-Dominiky.jpg"
+                        alt="Krásne Náramky"
+                        class="product-image"
+                    >
 
                     <h3>
                         Krásne Náramky
@@ -337,17 +354,19 @@
             </div>
 
 
-            <!-- KRÁSNE NÁRAMKY S MENO -->
+            <!-- NÁRAMOK S MENOM -->
             <div class="product-card">
 
                 <a href="krasnenaramkysmeno.html" class="product-link">
 
-                    <div class="product-icon">
-                        💕
-                    </div>
+                    <img
+                        src="https://i.postimg.cc/D0jds24w/naramok-s-menom.jpg"
+                        alt="Náramok s menom"
+                        class="product-image"
+                    >
 
                     <h3>
-                        Krásne Náramky s meno
+                        Náramok s menom
                     </h3>
 
                     <div class="price" id="price2">
@@ -358,24 +377,26 @@
 
                 <button
                     class="btn cart-btn"
-                    onclick="addToCart('Krásne Náramky s meno', 1.50, 0.45)">
+                    onclick="addToCart('Náramok s menom', 1.50, 0.45)">
                     🛒 Pridať do košíka
                 </button>
 
             </div>
 
 
-            <!-- RÔZNE PRÍVESKY -->
+            <!-- PRÍVESOK -->
             <div class="product-card">
 
                 <a href="rozneprivesky.html" class="product-link">
 
-                    <div class="product-icon">
-                        ✨
-                    </div>
+                    <img
+                        src="https://i.postimg.cc/1zJcpmJV/FB-IMG-1790347569368.jpg"
+                        alt="Prívesok"
+                        class="product-image"
+                    >
 
                     <h3>
-                        Rôzne prívesky
+                        Prívesok
                     </h3>
 
                     <div class="price" id="price3">
@@ -386,7 +407,7 @@
 
                 <button
                     class="btn cart-btn"
-                    onclick="addToCart('Rôzne prívesky', 2.00, 0.60)">
+                    onclick="addToCart('Prívesok', 2.00, 0.60)">
                     🛒 Pridať do košíka
                 </button>
 
@@ -397,6 +418,7 @@
     </section>
 
 
+    <!-- PÄTIČKA -->
     <footer>
         © 2026 Dominikine náramky 💗
     </footer>
@@ -404,13 +426,13 @@
 
     <script>
 
-        /* Zistí, či je piatok */
+        /* ZISTÍ, ČI JE PIATOK */
         function isFriday() {
             return new Date().getDay() === 5;
         }
 
 
-        /* BLACK FRIDAY + CENY */
+        /* BLACK FRIDAY A CENY */
         function updateSale() {
 
             if (isFriday()) {
@@ -528,7 +550,7 @@
         }
 
 
-        /* Spustenie funkcií */
+        /* SPUSTENIE */
         updateSale();
         updateCountdown();
 
