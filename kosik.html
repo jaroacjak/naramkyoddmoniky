@@ -256,6 +256,12 @@ main {
     color: #29232b;
 }
 
+.cart-item-custom-name {
+    color: #81757e;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
 .cart-item-price {
     color: #df438b;
     font-weight: 800;
@@ -799,6 +805,23 @@ setInterval(
 
 
 /* =========================
+   BEZPEČNÉ HTML
+========================= */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
    NAČÍTANIE KOŠÍKA
 ========================= */
 
@@ -893,6 +916,23 @@ function loadCart() {
                 "cart-item";
 
 
+            const customName =
+                item.braceletName
+                    ? `
+
+                        <div class="cart-item-custom-name">
+
+                            Meno na náramku:
+                            <strong>
+                                ${escapeHtml(item.braceletName)}
+                            </strong>
+
+                        </div>
+
+                    `
+                    : "";
+
+
             itemElement.innerHTML = `
 
                 <div class="cart-item-left">
@@ -904,8 +944,10 @@ function loadCart() {
                     <div>
 
                         <div class="cart-item-name">
-                            ${item.name}
+                            ${escapeHtml(item.name)}
                         </div>
+
+                        ${customName}
 
                         <div class="cart-item-price">
 
