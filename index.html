@@ -283,8 +283,12 @@
 
         <div class="product-grid">
 
+            <!-- KRÁSNE NÁRAMKY -->
             <div class="product-card">
-                <div class="product-icon">💗</div>
+
+                <div class="product-icon">
+                    💗
+                </div>
 
                 <h3>Krásne Náramky</h3>
 
@@ -295,10 +299,15 @@
                 <a href="krasnenaramky.html" class="btn">
                     Pozrieť produkt
                 </a>
+
             </div>
 
+            <!-- KRÁSNE NÁRAMKY S MENO -->
             <div class="product-card">
-                <div class="product-icon">💕</div>
+
+                <div class="product-icon">
+                    💕
+                </div>
 
                 <h3>Krásne Náramky s meno</h3>
 
@@ -309,10 +318,15 @@
                 <a href="krasnenaramkysmeno.html" class="btn">
                     Pozrieť produkt
                 </a>
+
             </div>
 
+            <!-- RÔZNE PRÍVESKY -->
             <div class="product-card">
-                <div class="product-icon">✨</div>
+
+                <div class="product-icon">
+                    ✨
+                </div>
 
                 <h3>Rôzne prívesky</h3>
 
@@ -323,6 +337,7 @@
                 <a href="rozneprivesky.html" class="btn">
                     Pozrieť produkt
                 </a>
+
             </div>
 
         </div>
@@ -334,6 +349,7 @@
     </footer>
 
     <script>
+
         function isFriday() {
             return new Date().getDay() === 5;
         }
@@ -341,6 +357,7 @@
         function updateSale() {
 
             if (isFriday()) {
+
                 document.body.classList.add("friday-sale");
 
                 document.getElementById("price1").innerHTML =
@@ -420,6 +437,7 @@
             updateSale();
             updateCountdown();
         }, 1000);
+
     </script>
 
 </body>
