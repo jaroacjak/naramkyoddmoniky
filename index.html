@@ -176,6 +176,14 @@
             transform: translateY(-5px);
         }
 
+        /* Klikateľná časť produktu */
+        .product-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
         .product-icon {
             font-size: 65px;
             margin-bottom: 15px;
@@ -209,6 +217,11 @@
 
         body.friday-sale .sale-price {
             color: #ff82b8;
+        }
+
+        .cart-btn {
+            margin-top: 5px;
+            width: 100%;
         }
 
         footer {
@@ -245,28 +258,38 @@
 <body>
 
     <div class="sale-bar">
+
         <div class="normal-sale">
-            ⏰ Akcia začína o: <span id="countdown"></span>
+            ⏰ Akcia začína o:
+            <span id="normalCountdown"></span>
         </div>
 
         <div class="black-friday">
             🖤 BLACK FRIDAY – 70% ZĽAVA NA VŠETKO!
-            ⏰ <span id="countdown"></span>
+            ⏰ <span id="blackFridayCountdown"></span>
         </div>
+
     </div>
 
     <header>
-        <div class="logo">💗 Dominikine náramky</div>
+
+        <div class="logo">
+            💗 Dominikine náramky
+        </div>
 
         <nav>
             <a href="index.html">Domov</a>
             <a href="kosik.html">🛒 Košík</a>
             <a href="kontakt.html">Kontakt</a>
         </nav>
+
     </header>
 
     <section class="hero">
-        <h1>Dominikine náramky 💗</h1>
+
+        <h1>
+            Dominikine náramky 💗
+        </h1>
 
         <p>
             Krásne náramky a prívesky za super ceny.
@@ -275,68 +298,97 @@
         <a href="kosik.html" class="btn">
             🛒 Košík
         </a>
+
     </section>
 
     <section class="products">
 
-        <h2>Naše produkty</h2>
+        <h2>
+            Naše produkty
+        </h2>
 
         <div class="product-grid">
 
             <!-- KRÁSNE NÁRAMKY -->
             <div class="product-card">
 
-                <div class="product-icon">
-                    💗
-                </div>
+                <a href="krasnenaramky.html" class="product-link">
 
-                <h3>Krásne Náramky</h3>
+                    <div class="product-icon">
+                        💗
+                    </div>
 
-                <div class="price" id="price1">
-                    1,50 €
-                </div>
+                    <h3>
+                        Krásne Náramky
+                    </h3>
 
-                <a href="krasnenaramky.html" class="btn">
-                    Pozrieť produkt
+                    <div class="price" id="price1">
+                        1,50 €
+                    </div>
+
                 </a>
 
+                <button
+                    class="btn cart-btn"
+                    onclick="addToCart('Krásne Náramky', 1.50, 0.45)">
+                    🛒 Pridať do košíka
+                </button>
+
             </div>
+
 
             <!-- KRÁSNE NÁRAMKY S MENO -->
             <div class="product-card">
 
-                <div class="product-icon">
-                    💕
-                </div>
+                <a href="krasnenaramkysmeno.html" class="product-link">
 
-                <h3>Krásne Náramky s meno</h3>
+                    <div class="product-icon">
+                        💕
+                    </div>
 
-                <div class="price" id="price2">
-                    1,50 €
-                </div>
+                    <h3>
+                        Krásne Náramky s meno
+                    </h3>
 
-                <a href="krasnenaramkysmeno.html" class="btn">
-                    Pozrieť produkt
+                    <div class="price" id="price2">
+                        1,50 €
+                    </div>
+
                 </a>
 
+                <button
+                    class="btn cart-btn"
+                    onclick="addToCart('Krásne Náramky s meno', 1.50, 0.45)">
+                    🛒 Pridať do košíka
+                </button>
+
             </div>
+
 
             <!-- RÔZNE PRÍVESKY -->
             <div class="product-card">
 
-                <div class="product-icon">
-                    ✨
-                </div>
+                <a href="rozneprivesky.html" class="product-link">
 
-                <h3>Rôzne prívesky</h3>
+                    <div class="product-icon">
+                        ✨
+                    </div>
 
-                <div class="price" id="price3">
-                    2,00 €
-                </div>
+                    <h3>
+                        Rôzne prívesky
+                    </h3>
 
-                <a href="rozneprivesky.html" class="btn">
-                    Pozrieť produkt
+                    <div class="price" id="price3">
+                        2,00 €
+                    </div>
+
                 </a>
+
+                <button
+                    class="btn cart-btn"
+                    onclick="addToCart('Rôzne prívesky', 2.00, 0.60)">
+                    🛒 Pridať do košíka
+                </button>
 
             </div>
 
@@ -344,16 +396,21 @@
 
     </section>
 
+
     <footer>
         © 2026 Dominikine náramky 💗
     </footer>
 
+
     <script>
 
+        /* Zistí, či je piatok */
         function isFriday() {
             return new Date().getDay() === 5;
         }
 
+
+        /* BLACK FRIDAY + CENY */
         function updateSale() {
 
             if (isFriday()) {
@@ -376,12 +433,19 @@
 
                 document.body.classList.remove("friday-sale");
 
-                document.getElementById("price1").innerHTML = "1,50 €";
-                document.getElementById("price2").innerHTML = "1,50 €";
-                document.getElementById("price3").innerHTML = "2,00 €";
+                document.getElementById("price1").innerHTML =
+                    "1,50 €";
+
+                document.getElementById("price2").innerHTML =
+                    "1,50 €";
+
+                document.getElementById("price3").innerHTML =
+                    "2,00 €";
             }
         }
 
+
+        /* ODPOČÍTAVANIE */
         function updateCountdown() {
 
             const now = new Date();
@@ -426,16 +490,53 @@
                     (difference / 1000) % 60
                 );
 
-            document.getElementById("countdown").textContent =
+            const text =
                 `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            document.getElementById("normalCountdown").textContent = text;
+            document.getElementById("blackFridayCountdown").textContent = text;
         }
 
+
+        /* PRIDANIE PRODUKTU DO KOŠÍKA */
+        function addToCart(name, normalPrice, fridayPrice) {
+
+            const price =
+                isFriday()
+                    ? fridayPrice
+                    : normalPrice;
+
+            let cart =
+                JSON.parse(
+                    localStorage.getItem("dominikinEshopCart")
+                ) || [];
+
+            cart.push({
+                name: name,
+                price: price
+            });
+
+            localStorage.setItem(
+                "dominikinEshopCart",
+                JSON.stringify(cart)
+            );
+
+            alert(
+                name +
+                " bol pridaný do košíka! 🛒"
+            );
+        }
+
+
+        /* Spustenie funkcií */
         updateSale();
         updateCountdown();
 
         setInterval(() => {
+
             updateSale();
             updateCountdown();
+
         }, 1000);
 
     </script>
